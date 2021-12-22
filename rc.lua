@@ -25,7 +25,7 @@ require("awful.hotkeys_popup.keys")
 local volume_control = require("volume-control")
 
 -- define your volume control, using default settings:
-local volumecfg = volume_control({})
+local volumecfg = volume_control({ font = "Source Code Pro 18"})
 
 -- -- add key bindings
 -- local globalkeys = awful.util.table.join(
@@ -74,10 +74,10 @@ modkey = "Mod4"
 awful.layout.layouts = {
     -- awful.layout.suit.floating,
     -- awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
+    awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
@@ -119,7 +119,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock('<span color="#ffffff" font="Source Code Pro 18"> %a %b %d, %H:%M:%S </span>', 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -169,7 +169,7 @@ beautiful.font = 'Source Code Pro 20'
 beautiful.wallpaper = '~/Desktop/Cyberpunk_Desktop/neon_city_landscape.jpg'
 
 -- Gaps
-beautiful.useless_gap = 2
+-- beautiful.useless_gap = 2
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -233,7 +233,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             volumecfg.widget,
-            mykeyboardlayout,
+            -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox
